@@ -41,7 +41,7 @@ export const Valerych: React.FC<Props> = ({expression = 'smirk', speaking = true
       </defs>
 
       <ellipse cx="342" cy="879" rx="250" ry="19" fill="#080e12" opacity=".28" filter="url(#v2-soft-shadow)"/>
-      <g transform={\`translate(0 ${breath})\`}>
+      <g transform={`translate(0 ${breath})`}>
         <path d="M238 490 Q190 499 145 548 Q103 593 91 704 L54 916 Q52 929 69 929 L612 929 Q629 927 624 909 L585 704 Q574 588 525 545 Q482 507 426 491 L385 469 L270 470Z" fill="url(#v2-fabric)" stroke="#10171c" strokeWidth="15" strokeLinejoin="round"/>
         <path d="M238 490 Q190 499 145 548 Q103 593 91 704 L54 916 Q52 929 69 929 L612 929 Q629 927 624 909 L585 704 Q574 588 525 545 Q482 507 426 491 L385 469 L270 470Z" fill="url(#v2-cloth)" opacity=".85"/>
         <path d="M246 510 Q213 560 204 638 M435 512 Q477 555 489 645" fill="none" stroke="#536069" strokeWidth="8" opacity=".35"/>
@@ -61,7 +61,7 @@ export const Valerych: React.FC<Props> = ({expression = 'smirk', speaking = true
       <path d="M470 230 Q527 198 541 266 Q550 339 490 373 Q463 382 449 348Z" fill="url(#v2-skin)" stroke="#382522" strokeWidth="13"/>
       <path d="M489 260q28-12 33 20q2 39-31 59" fill="none" stroke="#8e4f42" strokeWidth="10" strokeLinecap="round"/>
 
-      <g transform={\`translate(${Math.sin(frame / 13) * 1.6} ${bob}) rotate(-1 340 330)\`}>
+      <g transform={`translate(${Math.sin(frame / 13) * 1.6} ${bob}) rotate(-1 340 330)`}>
         <path d="M184 188 Q220 117 337 122 Q461 111 493 202 Q514 274 493 378 Q478 474 391 514 Q330 544 261 508 Q185 470 171 379 Q153 271 184 188Z" fill="url(#v2-skin)" stroke="#342321" strokeWidth="15" strokeLinejoin="round"/>
         <path d="M190 197 Q221 145 333 143 Q441 132 479 205 Q446 180 409 190 Q352 207 298 190 Q235 178 190 221Z" fill="#f3b18a" opacity=".34"/>
         <path d="M177 325 Q190 414 244 457 Q217 453 195 420 Q174 384 177 325Z" fill="#8d4e42" opacity=".28"/>
@@ -86,16 +86,16 @@ export const Valerych: React.FC<Props> = ({expression = 'smirk', speaking = true
         <path d="M287 448q43 16 81-2" fill="none" stroke="#a34f49" strokeWidth="6" opacity=".6"/>
         <path d="M260 390q-23-7-39-20m199 8q18-12 33-23" fill="none" stroke="#7d493e" strokeWidth="7" opacity=".5"/>
         <path d="M211 220q23-17 43-13m-30 37l13-5m196-21l24 7m-12 28l-14-4M220 338l11 4m212-2l-12 5" fill="none" stroke="#ffe0bd" strokeWidth="4" strokeLinecap="round" opacity=".42"/>
-        {expression === 'deadpan' ? <path d="M278 424q54 9 104-5" fill="none" stroke="#542b2b" strokeWidth="11" strokeLinecap="round"/> : <path d={\`M272 418 Q333 ${418 + mouthY} 406 406 Q388 ${447 + mouthY} 327 449 Q292 444 272 418Z\`} fill="#542b2b" stroke="#432321" strokeWidth="6" strokeLinejoin="round"/>
+        {expression === 'deadpan' ? <path d="M278 424q54 9 104-5" fill="none" stroke="#542b2b" strokeWidth="11" strokeLinecap="round"/> : <path d={`M272 418 Q333 ${418 + mouthY} 406 406 Q388 ${447 + mouthY} 327 449 Q292 444 272 418Z`} fill="#542b2b" stroke="#432321" strokeWidth="6" strokeLinejoin="round"/>
       </g>
 
-      <g transform={\`rotate(-4 ${340 + Math.sin(frame / 17) * 1.5} 190)\`}>
+      <g transform={`rotate(-4 ${340 + Math.sin(frame / 17) * 1.5} 190)`}>
         <path d="M153 221 Q148 91 268 54 Q374 19 462 89 Q510 127 523 212 Q470 192 400 188 Q275 181 166 243Z" fill="url(#v2-cap)" stroke="#080d11" strokeWidth="17" strokeLinejoin="round"/>
         <path d="M184 170 Q271 94 378 105 Q438 111 477 153" fill="none" stroke="#4b555b" strokeWidth="7" opacity=".56"/>
         <path d="M165 220 Q291 173 448 190 Q512 198 532 224 Q541 243 517 251 Q347 221 177 276Z" fill="#202a30" stroke="#080d11" strokeWidth="14" strokeLinejoin="round"/>
         <path d="M191 228q147-41 296-17" fill="none" stroke="#586168" strokeWidth="4" opacity=".55"/>
       </g>
-      <g transform={\`translate(${Math.sin(frame / 10) * 4} ${Math.sin(frame / 8) * 3})\`}>
+      <g transform={`translate(${Math.sin(frame / 10) * 4} ${Math.sin(frame / 8) * 3})`}>
         <path d="M489 705 Q530 669 571 697 Q610 724 591 778 Q569 819 519 798 Q483 779 489 705Z" fill="url(#v2-skin)" stroke="#392522" strokeWidth="12"/>
         <path d="M530 704l15 25m8-32l15 28m-39 9l14 24m29-9l12 20m-55 4l12 16" fill="none" stroke="#f2d6aa" strokeWidth="9" strokeLinecap="round"/>
       </g>

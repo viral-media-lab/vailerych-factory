@@ -24,7 +24,7 @@ export const PilotScene: React.FC = () => {
         <rect width="1080" height="1920" fill="url(#yard-sky)"/>
         <path d="M-60 120H1140V1300H-60Z" fill="url(#yard-wall)" stroke="#6e6756" strokeWidth="22"/>
         <rect x="0" y="120" width="1080" height="1180" fill="url(#wall-noise)" opacity=".8"/>
-        {Array.from({length: 5}, (_, i) => <g key={i} transform={\`translate(${36 + i * 218} 0)\`}>
+        {Array.from({length: 5}, (_, i) => <g key={i} transform={`translate(${36 + i * 218} 0)`}>
           <rect x="0" y="185" width="148" height="222" rx="3" fill="#e1d2b1" stroke="#6d6554" strokeWidth="10"/>
           <rect x="13" y="198" width="122" height="194" fill="#536b68" stroke="#344b49" strokeWidth="9"/>
           <path d="M24 210h99" stroke="#d5e1cf" strokeWidth="5" opacity=".22"/>
@@ -38,12 +38,12 @@ export const PilotScene: React.FC = () => {
         <rect width="1080" height="1920" fill="none" stroke="#e7d9bb" strokeWidth="24" opacity=".2"/>
       </svg>
 
-      <AbsoluteFill style={{transform: \`translateX(${shake}px) scale(${camera + entrance * .035})\`, transformOrigin: '50% 68%'}}>
+      <AbsoluteFill style={{transform: `translateX(${shake}px) scale(${camera + entrance * .035})`, transformOrigin: '50% 68%'}}>
         <div style={{position: 'absolute', width: 1050, height: 1450, left: 15, top: 330, filter: 'drop-shadow(0 25px 22px rgba(29,22,17,.3))'}}>
           <Valerych expression={expression} speaking/>
         </div>
       </AbsoluteFill>
-      <div style={{position: 'absolute', top: 115, left: 55, right: 55, transform: \`translateY(${(1-titlePop)*35}px) scale(${.92 + titlePop*.08})\`, opacity: titlePop, textAlign: 'center', color: '#fff0d5', fontWeight: 900, fontSize: 64, lineHeight: 1.04, letterSpacing: -2, textShadow: '0 5px 0 #302720, 0 9px 22px rgba(35,25,18,.7)'}}>
+      <div style={{position: 'absolute', top: 115, left: 55, right: 55, transform: `translateY(${(1-titlePop)*35}px) scale(${.92 + titlePop*.08})`, opacity: titlePop, textAlign: 'center', color: '#fff0d5', fontWeight: 900, fontSize: 64, lineHeight: 1.04, letterSpacing: -2, textShadow: '0 5px 0 #302720, 0 9px 22px rgba(35,25,18,.7)'}}>
         {subtitle}
       </div>
       <div style={{position: 'absolute', top: 38, right: 48, color: '#30291f', fontSize: 25, fontWeight: 900, letterSpacing: 4, textShadow: '0 1px #e8d8b9'}}>VAIЛЕРЫЧ</div>
