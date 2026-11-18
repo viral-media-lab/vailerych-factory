@@ -1,6 +1,5 @@
-import asyncio
-import os
 from pathlib import Path
+from gtts import gTTS
 
 TEXT = (
     "Брат, ты можешь себя за жопу укусить? Нет? "
@@ -18,35 +17,13 @@ TEXT = (
     "Просто даже твой мозг не хочет с тобой связываться."
 )
 
-async def main():
+def main():
     Path("public").mkdir(parents=True, exist_ok=True)
     output = Path("public/voice.mp3")
-
-    try:
-        import edge_tts
-        for voice in ("ru-RU-DmitryNeural", "ru-RU-SvetlanaNeural"):
-            try:
-                await edge_tts.Communicate(TEXT, voice=voice).save(str(output))
-                if output.exists() and output.stat().st_size > 10000:
-                    print(f"VOICE_OK edge-tts voice={voice} bytes={output.stat().st_size}")
-                    return
-                output.unlink(missing_ok=True)
-            except Exception as exc:
-                print(f"EDGE_TTS_FAILED voice={voice}: {type(exc).__name__}: {exc}")
-                output.unlink(missing_ok=True)
-    except Exception as exc:
-        print(f"EDGE_TTS_UNAVAILABLE: {type(exc).__name__}: {exc}")
-
-    try:
-        from gtts import gTTS
-        gTTS(text=TEXT, lang="ru", tld="com", slow=False).save(str(output))
-        if output.exists() and output.stat().st_size > 10000:
-            print(f"VOICE_OK gTTS bytes={output.stat().st_size}")
-            return
-    except Exception as exc:
-        print(f"GTTS_FAILED: {type(exc).__name__}: {exc}")
-
-    raise RuntimeError("No TTS provider returned a usable Russian voice track.")
+    gTTS(text=TEXT, lang="ru", tld="com", slow=False, timeout=15).save(str(output))
+    if not output.exists() or output.stat().st_size < 10000:
+        raise RuntimeError("gTTS returned an empty or invalid audio file.")
+    print(f"VOICE_OK provider=gTTS bytes={output.stat().st_size}")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
