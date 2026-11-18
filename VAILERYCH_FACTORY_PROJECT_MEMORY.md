@@ -45,3 +45,11 @@
 - Артефакт MP4 теперь загружается даже при сбое проверки, чтобы результат можно было диагностировать.
 - Важно: предыдущий рендер не считается готовым или одобренным. После нового запуска требуется проверить артефакт и качество изображения/озвучки.
 - Визуальная оценка по исходникам: композиция содержит шесть тематических блоков, но графика в основном SVG/векторная; качество уровня референса Claude пока не подтверждено.
+
+### 2026-11-18 — visual redesign from user reference
+- User clarified that the supplied image is the target art direction and requested video production through GitHub, not image generation.
+- Re-read current GitHub source before editing. HEAD content included PilotFilm.tsx, Valerych.tsx and render.yml.
+- Updated `src/characters/Valerych.tsx` to match the supplied reference more closely: messy dark hair (no cap), youthful expressive face, navy tracksuit with twin white stripes, cream shirt, warm anime-influenced 2D shading and paper/fabric texture.
+- Commit: `b5a03f174f54c1635a2b368904219f0e012eecb6`.
+- GitHub Actions render workflow is configured to run on push to main, so this commit should trigger a new render.
+- Not yet verified: TypeScript result, workflow run status, MP4 artifact, actual visual/audio quality. Do not call the video finished until these are checked.
