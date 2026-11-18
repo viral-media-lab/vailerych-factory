@@ -4,25 +4,68 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   render:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install --upgrade pip gTTS
-      - run: python scripts/generate_voice.py
-      - run: npm install
-      - run: npm run typecheck
-      - run: npm run render
-      - run: ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height,sample_rate -of json out/pilot01.mp4
-      - uses: actions/upload-artifact@v4
+      - name: Install FFmpeg tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+          ffmpeg -version
+          ffprobe -version
+      - name: Install voice generator
+        run: python -m pip install --upgrade pip gTTS
+      - name: Generate Russian voice
+        run: python scripts/generate_voice.py
+      - name: Check generated voice
+        run: |
+          test -s public/voice.mp3
+          ffprobe -v error -show_entries format=duration,size -of json public/voice.mp3
+      - name: Install Node dependencies
+        run: npm install
+      - name: TypeScript check
+        run: npm run typecheck
+      - name: Render vertical video
+        run: npm run render
+      - name: Validate rendered MP4
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s out/pilot01.mp4
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_type,codec_name,width,height,sample_rate -of json out/pilot01.mp4 > out/probe.json
+          cat out/probe.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("out/probe.json").read_text())
+          duration = float(data["format"]["duration"])
+          streams = data.get("streams", [])
+          video = next((s for s in streams if s.get("codec_type") == "video"), None)
+          audio = next((s for s in streams if s.get("codec_type") == "audio"), None)
+          assert video is not None, "MP4 has no video stream"
+          assert audio is not None, "MP4 has no audio stream"
+          assert (video.get("width"), video.get("height")) == (1080, 1920), f"Unexpected frame size: {video.get('width')}x{video.get('height')}"
+          assert 40 <= duration <= 46, f"Unexpected duration: {duration:.2f}s"
+          print(f"MP4_VALID duration={duration:.2f}s video={video.get('codec_name')} 1080x1920 audio={audio.get('codec_name')}")
+          PY
+      - name: Upload rendered MP4 for review
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: vailerych-pilot-film
           path: out/pilot01.mp4
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 7
