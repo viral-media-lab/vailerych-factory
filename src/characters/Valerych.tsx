@@ -86,7 +86,7 @@ export const Valerych: React.FC<Props> = ({expression = 'smirk', speaking = true
         <path d="M287 448q43 16 81-2" fill="none" stroke="#a34f49" strokeWidth="6" opacity=".6"/>
         <path d="M260 390q-23-7-39-20m199 8q18-12 33-23" fill="none" stroke="#7d493e" strokeWidth="7" opacity=".5"/>
         <path d="M211 220q23-17 43-13m-30 37l13-5m196-21l24 7m-12 28l-14-4M220 338l11 4m212-2l-12 5" fill="none" stroke="#ffe0bd" strokeWidth="4" strokeLinecap="round" opacity=".42"/>
-        {expression === 'deadpan' ? <path d="M278 424q54 9 104-5" fill="none" stroke="#542b2b" strokeWidth="11" strokeLinecap="round"/> : <path d={`M272 418 Q333 ${418 + mouthY} 406 406 Q388 ${447 + mouthY} 327 449 Q292 444 272 418Z`} fill="#542b2b" stroke="#432321" strokeWidth="6" strokeLinejoin="round"/>
+        {expression === 'deadpan' ? <path d="M278 424q54 9 104-5" fill="none" stroke="#542b2b" strokeWidth="11" strokeLinecap="round"/> : <path d={`M272 418 Q333 ${418 + mouthY} 406 406 Q388 ${447 + mouthY} 327 449 Q292 444 272 418Z`} fill="#542b2b" stroke="#432321" strokeWidth="6" strokeLinejoin="round"/>}
       </g>
 
       <g transform={`rotate(-4 ${340 + Math.sin(frame / 17) * 1.5} 190)`}>
