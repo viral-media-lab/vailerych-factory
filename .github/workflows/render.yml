@@ -1,0 +1,23 @@
+name: Validate and render pilot
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install
+      - run: npm run typecheck
+      - run: npm run render
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vailerych-pilot-preview
+          path: out/pilot01.mp4
+          if-no-files-found: error
