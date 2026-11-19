@@ -39,6 +39,10 @@ jobs:
         run: npm run typecheck
       - name: Render vertical video
         run: npm run render
+      - name: Mux narration into video
+        run: |
+          ffmpeg -y -i out/pilot01.mp4 -i public/voice.mp3 -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -b:a 192k -af apad -t 60 -movflags +faststart out/pilot01_with_audio.mp4
+          mv out/pilot01_with_audio.mp4 out/pilot01.mp4
       - name: Validate rendered MP4
         shell: bash
         run: |
