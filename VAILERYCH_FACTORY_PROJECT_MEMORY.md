@@ -53,3 +53,14 @@
 - Commit: `b5a03f174f54c1635a2b368904219f0e012eecb6`.
 - GitHub Actions render workflow is configured to run on push to main, so this commit should trigger a new render.
 - Not yet verified: TypeScript result, workflow run status, MP4 artifact, actual visual/audio quality. Do not call the video finished until these are checked.
+
+## 2026-11-19 — Pivot to automated science Shorts
+- User cancelled the VAIЛЕРЫЧ character concept. New channel format: science and interesting facts, no recurring mascot.
+- Art direction: hand-drawn 2D illustration, irregular dark outlines, muted earthy palette, textured backgrounds, single focal object, scene-based storytelling, comparisons and diagrams, occasional dark accent scenes.
+- Typography: kinetic large bold text; pop-in/spring, word-by-word, highlighted numbers/keywords, hand-drawn frame reveals, impact shake. Motion should be purposeful and restrained.
+- Narration: conversational, expressive, accessible, paced with pauses and curiosity escalation; not a lecture voice.
+- Target pipeline: topic research -> script -> storyboard -> procedural scenes -> animated typography -> TTS -> sound design -> render -> QC -> Instagram Reels publishing.
+- Free-first: no paid API calls or services without explicit approval. User wants minimal involvement and no local installations.
+- Pilot topic: “Ты тираннозавр. И тебе не выжить”.
+- Added src/scenes/SciencePilot.tsx; root composition switched to SciencePilot, 60s, 30fps, 1080x1920. Russian TTS script replaced. Workflow duration validation broadened to 50-70s.
+- Quality remains unverified until MP4 and actual frames/audio are checked.

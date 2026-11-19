@@ -1,4 +1,4 @@
-name: Render VAIЛЕРЫЧ pilot film
+name: Render Science Shorts pilot
 on:
   push:
     branches: [main]
@@ -57,14 +57,14 @@ jobs:
           assert video is not None, "MP4 has no video stream"
           assert audio is not None, "MP4 has no audio stream"
           assert (video.get("width"), video.get("height")) == (1080, 1920), f"Unexpected frame size: {video.get('width')}x{video.get('height')}"
-          assert 40 <= duration <= 46, f"Unexpected duration: {duration:.2f}s"
+          assert 50 <= duration <= 70, f"Unexpected duration: {duration:.2f}s"
           print(f"MP4_VALID duration={duration:.2f}s video={video.get('codec_name')} 1080x1920 audio={audio.get('codec_name')}")
           PY
       - name: Upload rendered MP4 for review
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: vailerych-pilot-film
+          name: science-shorts-pilot
           path: out/pilot01.mp4
           if-no-files-found: warn
           retention-days: 7

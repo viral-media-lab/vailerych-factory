@@ -1,33 +1,12 @@
-# VAIЛЕРЫЧ Factory
-
-Программный конвейер для русскоязычных образовательных Shorts/Reels с постоянным 2D-персонажем VAIЛЕРЫЧ.
-
-## Текущий статус
-- Remotion + React + TypeScript + SVG.
-- Вертикальная композиция Pilot01: 1080×1920, 30 fps, 44 секунды.
-- Шесть тематических блоков: двор/хук, щекотка, мозг/предсказание, диспетчер/штамп «СВОЙ», тревога, финальный панч.
-- Русская тестовая озвучка генерируется gTTS.
-- GitHub Actions устанавливает FFmpeg, проверяет TypeScript, рендерит MP4, проверяет метаданные и наличие обеих дорожек, затем загружает артефакт для просмотра.
-
-## Проверка качества
-MP4 не считается готовым до просмотра реального файла и проверки:
-1. 1080×1920, 30 fps, длительность около 44 секунд.
-2. Наличие и слышимость аудио, отсутствие обрезанных фраз.
-3. Синхронизация текста с речью.
-4. Разнообразие сцен, движения персонажа и камеры.
-5. Отсутствие визуальных артефактов и ошибок композиции.
-
-## Локальный запуск
-```bash
-npm install
-npm run start
-npm run render
-```
-
-## Следующие этапы
-1. Проверить MP4 из последнего GitHub Actions artifact.
-2. Сравнить реальный ролик с пользовательским референсом.
-3. Доработать авторский визуальный стиль и постановку сцен по результатам просмотра.
-4. После утверждения качества подключить автоматическую публикацию Instagram через Meta API.
-
-Не считать ролик готовым до проверки итогового MP4.
+# Science Shorts Factory
+Automated Russian-language vertical science videos: curious facts explained with approachable narration, hand-drawn animated scenes, kinetic typography, visual comparisons, and punchy sound design.
+## Current pilot
+**Ты тираннозавр. И тебе не выжить.**
+Remotion composition: 1080x1920, 30fps, 60 seconds target. Scene generation is procedural; voice is generated in GitHub Actions.
+## Pipeline
+Topic and script -> scene design -> animated illustration + typography -> Russian TTS -> render -> QC -> Reels publishing (future).
+## Run
+- GitHub Actions renders on push to main or manual dispatch.
+- Artifact is uploaded for review.
+- Don't call a render complete until duration, streams, and actual visual/audio quality are checked.
+Free-first project. No paid API services without explicit approval.
