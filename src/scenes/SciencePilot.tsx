@@ -21,7 +21,7 @@ const Dino:React.FC<{kind:string;accent:string;frame:number}> = ({kind,accent,fr
   <path d="M260 365Q365 260 520 325L600 460Q560 530 450 545Q305 550 260 470Z" fill="#81905e"/>
   <path d="M500 360Q605 290 685 185Q710 140 770 165Q830 190 790 255Q720 350 630 420" fill="#687a4f" stroke="#292b24" strokeWidth="18" strokeLinejoin="round"/>
   <path d="M715 185Q780 135 850 185Q880 220 830 275Q780 315 705 270Z" fill="#7f8e59" stroke="#292b24" strokeWidth="18"/>
-  <path d={`M720 245Q790 260 850 235Q840 ${250+mouth} 770 ${260+mouth}Q730 275 720 245Z`} fill="#342520" stroke="#28251f" strokeWidth="10}/>
+  <path d={`M720 245Q790 260 850 235Q840 ${250+mouth} 770 ${260+mouth}Q730 275 720 245Z`} fill="#342520" stroke="#28251f" strokeWidth="10"/>
   <path d="M735 247l10 18m28-15l10 19m29-23l8 15" stroke="#f3e5c9" strokeWidth="9" strokeLinecap="round"/>
   <circle cx="790" cy="207" r="22" fill="#f1d39a" stroke="#27251e" strokeWidth="8"/><circle cx="798" cy="208" r="9" fill="#211f1b"/>
   <path d="M240 435Q100 455 55 390Q25 355 70 345Q120 330 180 380L285 390" fill="#687a50" stroke="#292b24" strokeWidth="18"/>
