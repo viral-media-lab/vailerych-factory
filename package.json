@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts Pilot01 out/pilot01.mp4",
+    "render": "remotion render src/index.ts SciencePilot out/pilot01.mp4",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
