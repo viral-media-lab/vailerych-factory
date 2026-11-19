@@ -64,3 +64,7 @@
 - Pilot topic: “Ты тираннозавр. И тебе не выжить”.
 - Added src/scenes/SciencePilot.tsx; root composition switched to SciencePilot, 60s, 30fps, 1080x1920. Russian TTS script replaced. Workflow duration validation broadened to 50-70s.
 - Quality remains unverified until MP4 and actual frames/audio are checked.
+
+## 2026-11-19 — Run #27 QC failure and audio mux fix
+- Run #27 (44535114792) rendered 60s H.264 video at 1080x1920, 7.63MB, but MP4 lacked audio stream; QC correctly failed. Generated voice MP3 exists separately.
+- Planned workflow fix: mux public/voice.mp3 into rendered MP4 with FFmpeg AAC audio and pad audio to 60s, then run MP4 validation. Do not claim pilot is ready until new run passes QC and artifact/audio/visual inspection.
